@@ -5,6 +5,8 @@ const cors=require('cors')
 const getConnection = require("./database")
 getConnection()
 
+const classroom = require("./Models/classroom.model")
+
 //import the routes we need
 const userApi = require("./apis/users")
 const classroomApi = require("./apis/classroom")
@@ -15,10 +17,27 @@ app.use(cors())
 app.use("/teacher",userApi)
 app.use("/classroom",classroomApi)
 app.get("/goToLink/:classroomId/:studentId",async(req,res)=>{
-    res.writeHead(301,
-        {Location: 'https://google.com'}
-      );
-      res.end();
+    let cls = await classroom.findById(req.params.classroomId)
+    let studs = cls.students
+    updatedstuds = studs.map((std) => {
+        if(std._id === req.params.studentId){
+            std.isPresent = true
+        }
+    })
+
+    await classroom.findByIdAndUpdate(req.params.classroomId, {
+        $set:{students:updatedstuds}
+    } , (err)=>{
+        if(err){
+            res.send({message:"some error occured",success:false})
+        }
+        else{
+            res.writeHead(301,
+                {Location: cls.meet_link}
+              );
+              res.end();
+        }
+    })
 })
 
 //middleware to solve the invalid routes
