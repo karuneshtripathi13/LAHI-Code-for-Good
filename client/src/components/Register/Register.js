@@ -26,9 +26,12 @@ export default function Login() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.msg);
-        alert(data.msg);
-        if (data.success) history.push("/login");
+        console.log(data.success);
+        if (!data.success) 
+        {
+          alert("Registered successfully");
+          history.push("/")
+        }
         window.location.reload();
       });
   }
