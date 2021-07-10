@@ -6,19 +6,18 @@ const getConnection = require("./database")
 getConnection()
 
 //import the routes we need
-const taskapi = require("./apis/taskapi")
-const userapi = require("./apis/userapi")
+const smsapi = require("./apis/sms.api")
 //This helps us parse the json data we receive
 app.use(express.json())
 
 
 // all routes with http:localhost:4000/users/* will be sent to the user api       
-app.use("/users",userapi)
+// app.use("/users",userapi)
 
 // all routes with http:localhost:4000/tasks/* will be sent to the task api
-app.use("/tasks",taskapi)
+// app.use("/tasks",taskapi)
 
-
+app.use("/sms",smsapi)
 
 //middleware to solve the invalid routes
 app.use((req,res) => {
