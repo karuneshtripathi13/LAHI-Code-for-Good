@@ -23,6 +23,7 @@ const Bloglist = () => {
     return (
         <div>
             <div className="meetingbtn"><Link to="/login/startmeet">Send Meeting Invites</Link></div>
+            <div className="meetingbtn"><Link to="/login/attendence">View Attendence</Link></div>
             <div className="blocklist">
             {students.map((student)=>
             <div className="blockspreview">
