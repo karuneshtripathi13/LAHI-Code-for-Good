@@ -1,0 +1,11 @@
+.NGOheading{
+    display: inline;
+}
+.Logout{
+    display: flex;
+}
+.logoutbtn{
+    display: inline;
+    color: black;
+    margin-left: 70vw;
+}
