@@ -1,7 +1,7 @@
 const exp = require("express")
 const pollApi = exp.Router()
 const classroom = require("../Models/classroom.model")
-const sendSms = require("../controller/smsController")
+const {sendPollSms} = require("../controller/smsController")
 
 pollApi.post("/saveLink/:classroomId", async(req,res)=>{
     await classroom.findByIdAndUpdate(req.params.classroomId {
@@ -21,7 +21,7 @@ pollApi.post("/saveLink/:classroomId", async(req,res)=>{
 pollApi.get("/sendpoll/:classroomId" , async(req,res)=>{
     let cls = classroom.findById(req.params.classroomId)
     let students = JSON.parse(JSON.stringify(cls.students))
-    await sendSms(students , req.body.date_time , cls.pollLink)
+    await sendPollSms(students , req.body.date_time , cls.pollLink)
 
 })
 
