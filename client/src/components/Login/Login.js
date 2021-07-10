@@ -6,26 +6,24 @@ import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 export default function Login() {
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return id.length > 0 && password.length > 0;
+    return email.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     console.log("in")
-    fetch('/file/login',{method:'POST',body:JSON.stringify({id:id,password:password}),headers: {
+    fetch('/teachers/login',{method:'POST',body:JSON.stringify({email:email,password:password}),headers: {
         'Accept': 'application/json','Content-Type': 'application/json'}}).then((response)=>response.json()).then((data)=>{
-          console.log(data.msg);
-          if(!data.msg)
-          alert('No Such Project found')
+          console.log(data);
+          if(!data.success)
+          alert('No Such User found')
           else
           {
-            window.localStorage.setItem("idd",id)
-            window.localStorage.setItem("proj",data.proj)
-            history.push('/login/home')
+            window.localStorage.setItem("teacher_id",data.teacher_id)
           }
       })
   }
@@ -36,12 +34,12 @@ export default function Login() {
     <div className="Login">
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="id">
-          <Form.Label>Project ID</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
             type="text"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">

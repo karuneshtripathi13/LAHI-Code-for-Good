@@ -7,3 +7,4 @@ team*.zip
 *.ovpn
 node_modules/
 .env
+yarn.lock
