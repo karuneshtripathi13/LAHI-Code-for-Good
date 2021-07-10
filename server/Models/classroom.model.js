@@ -21,5 +21,5 @@ const classroomSchema = new mongoose.Schema(
 
 
 
-const classroom = mongoose.model("classroom",classroomSchema)
-module.exports = classroom
+const classrooms = mongoose.model("classrooms",classroomSchema)
+module.exports = classrooms
