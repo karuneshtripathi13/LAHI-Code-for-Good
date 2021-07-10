@@ -3,11 +3,31 @@
   }
 .blockspreview
 {
+  
   max-width: 400px;
   margin-left: 22vw;
+  margin-right: 28vw;
+  width:400px;
+  padding-left: 30px;
+  padding-top: 15px;
   text-align: left;
   border-bottom: 1px solid #fafafa;
+  border-radius: 2vw;
 
+}
+.comp1
+{
+    display: block;
+    margin-top: 25vh;
+}
+.comp1 a
+{
+  display: block;
+
+}
+.main1
+{
+    display: flex;
 }
 .blockspreview h1 {
     font-size: 20px;
@@ -20,6 +40,9 @@
   }
 .meetingbtn{
     background-color: black;
+    padding: 5%;
     width: fit-content;
-    margin: auto;
+    display: block;
+    margin: 20px 0px;
+    text-decoration: none;
 }
