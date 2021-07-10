@@ -67,4 +67,18 @@ classroomApi.get("/getclassrooms/:teacherid", async(req,res)=>{
 
 })
 
+classroomApi.get("/getAttendance/:classId", async(req,res)=>{
+    let classroom = await classrooms.findById(req.params.classId)
+    var attendanceList = []
+    if(classroom) {
+        classroom.students.forEach(student => {
+            if(student.isPresent) { attendanceList.push(student.name) }
+        })
+        res.send({count: attendanceList.length, students: attendanceList})
+    }
+    else{
+        res.send({message:"Classroom does not exist"})
+    }
+
+})
 module.exports = classroomApi
