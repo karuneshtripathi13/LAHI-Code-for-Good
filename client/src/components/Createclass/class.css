@@ -18,7 +18,8 @@
 .div3 button
 {
     margin-left: 150px;
-    color: black;
+    background-color: black;
+    color: white;
     
 }
 .div3
@@ -33,4 +34,9 @@
     display: block;
     margin-bottom: 15px;
     margin-left: 150px;
+}
+.div2 button
+{
+    background-color: black;
+    color: white;
 }
