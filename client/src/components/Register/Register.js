@@ -21,7 +21,7 @@ export default function Login() {
           console.log(data.msg);
           alert(data.msg)
           if(data.msg.localeCompare('User Already exists')!==0)
-          history.push('/')
+          history.push('/login')
           window.location.reload()
       })
   }

@@ -1,17 +1,22 @@
 import React from 'react'
 
 const Portal = () => {
+    const createclass=()=>{
+            
+    }
     return (
-        <div action={}>
-            <form>
+        <div>
+            <form onSubmit={createclass}>
             <button className="createclassroom">Create Class Room</button>
             <input type="text" placeholder="ClassName"></input>
-            <button type="submit">Go</button>
+            <button type="submit">Create</button>
             </form>
             <form action="">
-            <button className="createclassroom">Add student</button>
-            <input type="text" placeholder="ClassName"></input>
-            <button type="submit">Go</button>
+            <button className="addstudent">Add student</button>
+            <input type="text" placeholder="Student name"></input>
+            <input type="text" placeholder="Mobile Number"></input>
+            <input type="text" placeholder="Email ID"></input>
+            <button type="submit">Submit</button>
             </form>
         </div>
     )
