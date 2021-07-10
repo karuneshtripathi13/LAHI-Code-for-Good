@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./components/Login/Login";
 import SignUp from "./components/Register/Register";
-import Portal from "./components/Teacher Portal/Portal";
 import Classes from "./components/Classes/Classes";
 import Navbar from "./components/Navbar/Navbar";
 import Navbarlogin from "./components/Navbar-login/Navbarlogin";
@@ -13,6 +12,7 @@ import Bloglist from "./components/Student list/bloglist";
 import Meeting from "./components/Meeting/Meeting";
 import Attendance from "./components/Attendance_Handling/Attendance";
 import Polling from "./components/Polling/Polling";
+import Createclass from "./components/Createclass/Createclass";
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
             <Route path="/login/startmeet"><Meeting/></Route>
             <Route path="/login/attendence"><Attendance/> </Route>
             <Route path="/login/polling"><Polling/></Route>
+            <Route path="/login/createclass"><Createclass/></Route>
           </Route>
         </div>
       </Switch>
