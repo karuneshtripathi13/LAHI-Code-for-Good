@@ -14,7 +14,12 @@ app.use(express.json())
 
 app.use("/teacher",userApi)
 app.use("/classroom",classroomApi)
-
+app.get("/goToLink/:classroomId/:studentId",async(req,res)=>{
+    res.writeHead(301,
+        {Location: 'https://google.com'}
+      );
+      res.end();
+})
 
 //middleware to solve the invalid routes
 app.use((req,res) => {

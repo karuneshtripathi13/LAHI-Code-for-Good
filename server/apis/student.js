@@ -11,7 +11,7 @@ studentApi.put("/delete/:classid" , async(req,res)=>{
         studs = studs.filter((stud)=>{
             return stud._id !== studentid
         })
-        await classroom.findByIdandUpdate(req.parama.classid,{
+        await classroom.findByIdandUpdate(req.params.classid,{
             $set:{students:studs}
         }, (err)=>{
             if(err){
@@ -31,7 +31,7 @@ studentApi.post("/addstudent/:classid" , async(req,res)=>{
     if(cls){
         let studs = cls.students
         studs = studs.push(student)
-        await classroom.findByIdandUpdate(req.parama.classid,{
+        await classroom.findByIdandUpdate(req.params.classid,{
             $set:{students:studs}
         }, (err)=>{
             if(err){

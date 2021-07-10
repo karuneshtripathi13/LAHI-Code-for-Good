@@ -6,10 +6,25 @@ const teachers = require("../Models/teacher.model")
 
 
 
-classroomApi.post("/sendSms" , async (req,res)=>{
+classroomApi.post("/sendLink" , async (req,res)=>{
     const classroomId = req.body.classroomId
     const classroom = await classrooms.findOne({ _id: classroomId })
-    sendSms([{mobile: '+919618210245'},{mobile: '+919772208820'}], req.body.date_time, req.body.meet_link)
+    if(!classroom)
+    {
+        res.send({message:"Class not present",success:false})
+        return
+    }
+    await classrooms.findByIdandUpdate(classroomId,{
+        $set:{meetLink: req.body.meet_link}
+    }, (err)=>{
+        if(err){
+            res.send({message:"error occured",success:false})
+        }
+        else{
+            res.send({message:"deleted sucessfully" , success:true})
+        }
+    })
+    sendSms([{mobile: '+918250299834'},{mobile: '+919772208820'}], req.body.date_time, "http://localhost:3000/"+classroomId)
     //await sendSms(classroom.students, '13th September 2:30 PM', req.body.meetLink)
     //res.send({me})
 })

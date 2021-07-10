@@ -9,7 +9,7 @@ userapi.post("/register", async(req,res)=>{
     const {name,email,password} = req.body
     let teacher = await teachers.findOne({email})
     if(teacher){
-        res.send({message:"The email already exists" , success:false})
+        res.send({message:"The email already exists" , success: true})
     }
     else{
 
