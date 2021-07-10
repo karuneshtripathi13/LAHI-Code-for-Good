@@ -8,12 +8,14 @@ getConnection()
 //import the routes we need
 const userApi = require("./apis/users")
 const classroomApi = require("./apis/classroom")
+const studentApi = require("./apis/student")
 //This helps us parse the json data we receive
 app.use(express.json())
 app.use(cors())
 
 app.use("/teacher",userApi)
 app.use("/classroom",classroomApi)
+app.use("/student",studentApi)
 app.get("/goToLink/:classroomId/:studentId",async(req,res)=>{
     res.writeHead(301,
         {Location: 'https://google.com'}

@@ -1,6 +1,6 @@
 const exp = require("express")
 const studentApi = exp.Router()
-const classroom = requie("../Models/classroom.model")
+const classroom = require("../Models/classroom.model")
 
 studentApi.put("/delete/:classid" , async(req,res)=>{
 
@@ -25,7 +25,7 @@ studentApi.put("/delete/:classid" , async(req,res)=>{
 
 })
 
-studentApi.post("/addstudent/:classid" , async(req,res)=>{
+studentApi.post("/add/:classid" , async(req,res)=>{
     let student = req.body
     let cls = await classroom.findById(req.params.classid)
     if(cls){
