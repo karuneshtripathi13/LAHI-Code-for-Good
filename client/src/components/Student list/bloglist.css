@@ -5,5 +5,10 @@
 }
 .blockspreview{
     background-color: gray;
-    
+
+}
+.meetingbtn{
+    background-color: black;
+    width: fit-content;
+    margin: auto;
 }

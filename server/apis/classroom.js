@@ -1,6 +1,6 @@
 const exp = require("express")
 const classroomApi = exp.Router()
-const sendSms = require('../controller/smsController')
+const {sendSms} = require('../controller/smsController')
 const classrooms = require("../Models/classroom.model")
 const teachers = require("../Models/teacher.model")
 
