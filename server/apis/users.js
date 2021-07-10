@@ -3,18 +3,20 @@ const {hash,compare} = require("bcrypt")
 const userapi = exp.Router()
 const teachers = require("../Models/teacher.model")
 
+
+//http://
 userapi.post("/register", async(req,res)=>{
     const {name,email,password} = req.body
-    let res = await teachers.findOne({email})
-    if(res){
+    let teacher = await teachers.findOne({email})
+    if(teacher){
         res.send({message:"The email already exists" , success:false})
     }
     else{
-        let hashedpwd = hash(password , 6)
+
         let newteacher = new teachers({
             name:name,
             email:email,
-            password:hashedpwd
+            password:password
         })
 
         newteacher.save()
@@ -30,13 +32,14 @@ userapi.post("/register", async(req,res)=>{
 
 })
 
+//http://localhost:4000/teacher/login
 userapi.post("/login", async(req,res)=>{
     const {email,password} = req.body
     let teacher = await teachers.findOne({email})
-    if(res){
-        let verified = compare(password,teacher.password)
-        if(verified){
-            res.send({success:true,message:"logged in",})
+    if(teacher){
+        
+        if(password === teacher.password){
+            res.send({success:true,message:"logged in",teacher_id:teacher._id})
         }
         else{
             res.send({success:false,message:"Wrong password"})
