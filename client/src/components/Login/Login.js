@@ -54,7 +54,6 @@ export default function Login() {
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login &nbsp;<i className="fa fa-sign-in"></i>
         </Button>
-      
       </Form>
     </div>
   );

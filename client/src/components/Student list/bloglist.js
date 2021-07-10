@@ -1,5 +1,6 @@
 import { useState , useEffect } from "react";
 import React, { Component }  from 'react';
+import {Link} from 'react-router-dom'
 import './bloglist.css'
 const Bloglist = () => {
     const [students, setStudents] = useState([])
@@ -14,11 +15,14 @@ const Bloglist = () => {
             {
                 setStudents(data[i].students)
                 console.log('st=',data[i].students)
+                localStorage.setItem("id",data[i]._id)
             }
         }
         console.log(students)
     }, [])
     return (
+        <div>
+            <div className="meetingbtn"><Link to="/login/startmeet">Send Meeting Invites</Link></div>
             <div className="blocklist">
             {students.map((student)=>
             <div className="blockspreview">
@@ -28,6 +32,7 @@ const Bloglist = () => {
                 </div>
             </div>
             )}
+            </div>
             </div>
       );
 }
