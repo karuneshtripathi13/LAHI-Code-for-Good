@@ -1,17 +1,19 @@
 const exp = require("express")
 const studentApi = exp.Router()
-const classroom = requie("../Models/classroom.model")
+const classroom = require("../Models/classroom.model")
 
-studentApi.put("/delete/:classid" , async(req,res)=>{
+studentApi.delete("/delete/:classid" , async(req,res)=>{
 
     const studentid = req.body.studentId
     const cls= await classroom.findById(req.params.classid)
+    console.log(cls)
     if(cls){
-        let studs = cls.students
+        let studs = JSON.parse(JSON.stringify(cls.students))
+        console.log(studs)
         studs = studs.filter((stud)=>{
             return stud._id !== studentid
         })
-        await classroom.findByIdandUpdate(req.params.classid,{
+        await classroom.findByIdAndUpdate(req.params.classid,{
             $set:{students:studs}
         }, (err)=>{
             if(err){
@@ -25,17 +27,23 @@ studentApi.put("/delete/:classid" , async(req,res)=>{
 
 })
 
-studentApi.post("/addstudent/:classid" , async(req,res)=>{
+studentApi.post("/add/:classid" , async(req,res)=>{
     let student = req.body
     let cls = await classroom.findById(req.params.classid)
+    console.log(cls)
     if(cls){
-        let studs = cls.students
-        studs = studs.push(student)
-        await classroom.findByIdandUpdate(req.params.classid,{
+        let studs = JSON.parse(JSON.stringify(cls.students))
+        console.log(studs,student)
+        studs.push(student)
+        console.log(studs)
+        console.log()
+        await classroom.findByIdAndUpdate(req.params.classid,{
             $set:{students:studs}
         }, (err)=>{
             if(err){
                 res.send({message:"error occured",success:false})
+                console.log(err.message)
+                console.log(err)
             }
             else{
                 res.send({message:"deleted sucessfully" , success:true})

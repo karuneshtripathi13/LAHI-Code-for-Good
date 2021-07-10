@@ -5,20 +5,40 @@ const cors=require('cors')
 const getConnection = require("./database")
 getConnection()
 
+const classroom = require("./Models/classroom.model")
+
 //import the routes we need
 const userApi = require("./apis/users")
 const classroomApi = require("./apis/classroom")
+const studentApi = require("./apis/student")
 //This helps us parse the json data we receive
 app.use(express.json())
 app.use(cors())
-
+app.use("/student",studentApi)
 app.use("/teacher",userApi)
 app.use("/classroom",classroomApi)
+app.use("/student",studentApi)
 app.get("/goToLink/:classroomId/:studentId",async(req,res)=>{
-    res.writeHead(301,
-        {Location: 'https://google.com'}
-      );
-      res.end();
+    let cls = await classroom.findById(req.params.classroomId)
+    let studs = cls.students
+    studs.forEach((std) => {
+        if(std._id === req.params.studentId){
+            std.isPresent = true
+        }
+    })
+    await classroom.findByIdAndUpdate(req.params.classroomId, {
+        $set:{students:studs}
+    } , (err)=>{
+        if(err){
+            res.send({message:"some error occured",success:false})
+        }
+        else{
+            res.writeHead(301,
+                {Location: cls.meetLink}
+              );
+              res.end();
+        }
+    })
 })
 
 //middleware to solve the invalid routes
