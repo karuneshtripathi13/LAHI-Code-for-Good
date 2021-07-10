@@ -6,18 +6,15 @@ const getConnection = require("./database")
 getConnection()
 
 //import the routes we need
-const smsapi = require("./apis/classroom")
+const userApi = require("./apis/users")
+const classroomApi = require("./apis/classroom")
 //This helps us parse the json data we receive
 app.use(express.json())
 
 
-// all routes with http:localhost:4000/users/* will be sent to the user api       
-// app.use("/users",userapi)
+app.use("/teacher",userApi)
+app.use("/classroom",classroomApi)
 
-// all routes with http:localhost:4000/tasks/* will be sent to the task api
-// app.use("/tasks",taskapi)
-
-app.use("/sms",smsapi)
 
 //middleware to solve the invalid routes
 app.use((req,res) => {
