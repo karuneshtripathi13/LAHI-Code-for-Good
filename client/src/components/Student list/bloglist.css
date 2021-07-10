@@ -1,12 +1,23 @@
-.blocklist{
-    width: fit-content;
-    padding: 1vw;
-    margin: auto;
-}
-.blockspreview{
-    background-color: gray;
+.blockspreview:hover {
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  }
+.blockspreview
+{
+  max-width: 400px;
+  margin-left: 22vw;
+  text-align: left;
+  border-bottom: 1px solid #fafafa;
 
 }
+.blockspreview h1 {
+    font-size: 20px;
+    color: #f1356d;
+    margin-bottom: 8px;
+  }
+.blockspreview a
+  {
+    text-decoration: none;
+  }
 .meetingbtn{
     background-color: black;
     width: fit-content;
