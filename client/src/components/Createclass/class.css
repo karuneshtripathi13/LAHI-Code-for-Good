@@ -1,0 +1,36 @@
+.div1
+{
+    display: flex;
+    
+}
+.div2
+{
+    margin-top:200px;
+    margin-left: 300px;
+}
+.div2 input
+{
+    display: block;
+    
+    margin-right: auto;
+    margin-bottom: 15px;
+}
+.div3 button
+{
+    margin-left: 150px;
+    color: black;
+    
+}
+.div3
+{
+    margin-top: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.div3 input
+{
+    display: block;
+    margin-bottom: 15px;
+    margin-left: 150px;
+}

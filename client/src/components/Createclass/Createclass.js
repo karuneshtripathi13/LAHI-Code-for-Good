@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom'
+import './class.css'
 const Createclass = () => {
     const [students, setStudents] = useState([])
     const [name, setName] = useState("")
@@ -42,13 +43,17 @@ const Createclass = () => {
       });
     }
     return (
-        <div>
+        <div className="div1">
+            <div className="div2">
             <input type="text" value={name} placeholder="Name" onChange={(e)=>{setName(e.target.value)}}></input>
             <input type="text" value={email} placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}}></input>
             <input type="text" value={phone} placeholder="Phone Number" onChange={(e)=>{setPhone(e.target.value)}}></input>
             <button onClick={addstudent}>Add New Student</button>
+            </div>
+            <div className="div3">
             <input type="text" value={cname} placeholder="Class Name" onChange={(e)=>{setCname(e.target.value)}}></input>
             <button onClick={create}>Create Class</button>
+            </div>
         </div>
     )
 }
