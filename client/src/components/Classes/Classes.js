@@ -22,13 +22,14 @@ const Classes = () => {
     }
     return (
         <div className="classwrapper">
-        <ul id="data" >
-        <ul>  <div className="classbtn"><Link to='/' style={{textDecoration:"none",color:"white"}}>Add Class</Link></div></ul>
+        <ul id="data" className="list1" >
+        <div className="sub">
       {classes.map((data) => (
         <ul>
         <div className='classbtn'><Link to='/login/student/' onClick={()=>localStorage.setItem('ClassName',data.classname)} style={{textDecoration:"none",color:"white"}} >{data.classname}</Link></div>
         </ul>
-      ))}
+      ))}</div>
+      <ul>  <div className="classbtn1"><Link to='/' style={{textDecoration:"none",color:"white"}}>Add Class</Link></div></ul>
       </ul>
         </div>
     )

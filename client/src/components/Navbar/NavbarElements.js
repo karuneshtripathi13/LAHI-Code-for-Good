@@ -84,3 +84,7 @@ margin-left: 24px;
 	color: #808080;
 }
 `;
+export const H1=styled.h1`
+padding-top:15px;
+color:black;
+`;

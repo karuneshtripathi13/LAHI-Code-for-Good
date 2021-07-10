@@ -23,6 +23,8 @@ const Bloglist = () => {
     return (
         <div className="main1">
             
+            
+
             <div className="blocklist">
             {students.map((student)=>
             <div className="blockspreview">
@@ -34,9 +36,12 @@ const Bloglist = () => {
             )}
             </div>
             <div className="comp1">
-            <div className="meetingbtn"><Link to="/login/startmeet">Send Meeting Invites</Link></div>
-            <div className="meetingbtn"><Link to="/login/attendence">View Attendence</Link></div>
+            <div className="meetingbtn"><Link to="/login/startmeet" style={{textDecoration:"none"}}>Send Meeting Invites</Link></div>
+            <div className="meetingbtn"><Link to="/login/attendence" style={{textDecoration:"none"}}>View Attendence</Link></div>
+            <div className="meetingbtn"><Link to="/login/polling" style={{textDecoration:"none"}}>Start a Poll</Link></div>
+            <div className="meetingbtn"><Link to='/login/classes' style={{textDecoration:"none"}}>Back</Link></div>
             </div>
+            
             </div>
       );
 }
