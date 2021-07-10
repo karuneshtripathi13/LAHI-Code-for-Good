@@ -7,7 +7,7 @@ const getConnection  =  async () => {
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useFindAndModify: true,
+            useFindAndModify: false,
             useCreateIndex: true
         }).then(() => { console.log("Connected to MOngoDB") })
     

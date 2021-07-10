@@ -1,10 +1,8 @@
 const exp = require("express")
-const {hash,compare} = require("bcrypt")
 const userapi = exp.Router()
 const teachers = require("../Models/teacher.model")
 
-
-//http://
+//http://localhost:4000/teacher/register
 userapi.post("/register", async(req,res)=>{
     const {name,email,password} = req.body
     let teacher = await teachers.findOne({email})

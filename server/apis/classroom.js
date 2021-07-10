@@ -26,7 +26,7 @@ classroomApi.post("/sendLink" , async (req,res)=>{
     })
     // sendSms([{mobile: '+918250299834'},{mobile: '+919772208820'}], req.body.date_time, "http://localhost:3000/"+classroomId)
     sendSms(classroom.students, req.body.date_time, "http://localhost:4000/goToLink/"+classroomId)
-    res.send({"success": true})
+    res.send({"success": true,message:"sent successfully"})
 })
 
 
@@ -67,4 +67,18 @@ classroomApi.get("/getclassrooms/:teacherid", async(req,res)=>{
 
 })
 
+classroomApi.get("/getAttendance/:classId", async(req,res)=>{
+    let classroom = await classrooms.findById(req.params.classId)
+    var attendanceList = []
+    if(classroom) {
+        classroom.students.forEach(student => {
+            if(student.isPresent) { attendanceList.push(student.name) }
+        })
+        res.send({count: attendanceList.length, students: attendanceList})
+    }
+    else{
+        res.send({message:"Classroom does not exist"})
+    }
+
+})
 module.exports = classroomApi
