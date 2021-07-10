@@ -17,7 +17,7 @@ return (
         <img src={logo}/>
         <H1>LAHI</H1>
 		<NavBtn>
-		<NavBtnLink to='/' onClick={()=>{localStorage.removeItem("teacher_id")}}>LogOut</NavBtnLink>
+		<NavBtnLink to='/' onClick={()=>{localStorage.removeItem("teacher_id")}}><strong>LogOut</strong></NavBtnLink>
 		</NavBtn>
 	</Nav>
 	</>

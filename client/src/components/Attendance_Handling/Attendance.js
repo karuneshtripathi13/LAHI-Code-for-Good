@@ -26,7 +26,7 @@ const Attendance = () => {
        
     }, [])
     return (
-        <div>
+        <div className="div1">
             <h1>Present Students</h1>
             {studentnames.map((student)=>
             <div >

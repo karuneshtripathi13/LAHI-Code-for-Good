@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import './Meeting.css'
 const Meeting = () => {
     const [link, setLink] = useState("")
     const [date, setDate] = useState("")
@@ -28,10 +29,10 @@ const Meeting = () => {
     }
     return (
         <div>
-            <div><input type="text" onChange={(e) => setLink(e.target.value)} placeholder="Meeting Link"></input></div>
+            <div className="fld1"><input type="text" onChange={(e) => setLink(e.target.value)} placeholder="Meeting Link"></input></div>
             
-            <div><label for="datetime"></label><input name="datetime" type="datetime-local" onChange={(e)=>setDate(e.target.value)}></input></div>
-            <button onClick={startmessaging}>Send</button>
+            <div className="fld2"><label for="datetime"></label><input name="datetime" type="datetime-local" onChange={(e)=>setDate(e.target.value)}></input></div>
+            <button className="fld3" onClick={startmessaging}>Send</button>
         </div>
     )
 }

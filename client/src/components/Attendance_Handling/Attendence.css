@@ -1,5 +1,20 @@
-.studentnm{
-    max-width: fit-content;
+.div1 h3 {
+    max-width: 800px;
     padding: 1vw;
-    margin: auto;
+    margin-left:22vw;
+    border: 2px solid;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-color: black;
+    text-align: left;
+    width: 400px;
+    border-radius: 3px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.div1 h1
+{
+    text-align: left;
+    margin-left: 22vw;
 }

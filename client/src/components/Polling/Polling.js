@@ -5,8 +5,8 @@ const Polling = () => {
     const [live,setLive]=useState(false)
     return (
         <div>
-            <input onChange={(e)=>{setLink(e.target.value)}} type="text" placeholder="Poll Link"></input>
-            <button onClick={()=>{
+            <input className="inp1" onChange={(e)=>{setLink(e.target.value)}} type="text" placeholder="Poll Link"></input>
+            <button className="btn1" onClick={()=>{
                 const requestOptions = {
                     method: 'POST',
                     body: JSON.stringify({ poll_link:link }),
@@ -31,7 +31,7 @@ const Polling = () => {
               });
             }}>Submit</button>
             {(live?<div>
-            <button onClick={()=>{
+            <button className="btn2"onClick={()=>{
                 var path='http://localhost:4000/poll/sendpoll/'+localStorage.getItem('id')
                 fetch(path)
               .then((response) => response.json())
