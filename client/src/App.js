@@ -12,6 +12,7 @@ import Navbarlogin from "./components/Navbar-login/Navbarlogin";
 import Bloglist from "./components/Student list/bloglist";
 import Meeting from "./components/Meeting/Meeting";
 import Attendance from "./components/Attendance_Handling/Attendance";
+import Polling from "./components/Polling/Polling";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login/student"><Bloglist/></Route>
             <Route path="/login/startmeet"><Meeting/></Route>
             <Route path="/login/attendence"><Attendance/> </Route>
+            <Route path="/login/polling"><Polling/></Route>
           </Route>
         </div>
       </Switch>
