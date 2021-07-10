@@ -10,6 +10,7 @@ import Classes from "./components/Classes/Classes";
 import Navbar from "./components/Navbar/Navbar";
 import Navbarlogin from "./components/Navbar-login/Navbarlogin";
 import Bloglist from "./components/Student list/bloglist";
+import Meeting from "./components/Meeting/Meeting";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Navbar/>
             <Route path="/login/classes"><Classes/></Route>
             <Route path="/login/student"><Bloglist/></Route>
+            <Route path="/login/startmeet"><Meeting/></Route>
           </Route>
         </div>
       </Switch>
