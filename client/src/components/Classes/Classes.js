@@ -23,6 +23,7 @@ const Classes = () => {
     return (
         <div className="classwrapper">
         <ul id="data" >
+        <ul>  <div className="classbtn"><Link to='/' style={{textDecoration:"none",color:"white"}}>Add Class</Link></div></ul>
       {classes.map((data) => (
         <ul>
         <div className='classbtn'><Link to='/login/student/' onClick={()=>localStorage.setItem('ClassName',data.classname)} style={{textDecoration:"none",color:"white"}} >{data.classname}</Link></div>

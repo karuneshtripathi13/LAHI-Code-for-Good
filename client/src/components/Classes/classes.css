@@ -1,8 +1,19 @@
 .classbtn{
     background-color: black;
+    text-decoration : "none";
     color: white;
     padding: 0.5vw;
     width: 10vw;
-    margin: auto;
+    margin-right: auto;
+    margin-left : auto;
     margin-bottom: 2vw;
+    margin-top: 2vw;
+    border-radius: 4em;
+    max-width: 600px;
+    
+}
+.classwrapper
+{
+    margin-top: 125px;
+    background-color: #FCDEC0;
 }

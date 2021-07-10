@@ -37,7 +37,7 @@ return (
 		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 		</NavMenu>
 		<NavBtn>
-		<NavBtnLink to='/signin'>Sign In</NavBtnLink>
+		<NavBtnLink to='/' onClick={()=>{localStorage.removeItem("teacher_id")}}>LogOut</NavBtnLink>
 		</NavBtn>
 	</Nav>
 	</>
