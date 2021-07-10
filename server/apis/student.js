@@ -6,8 +6,10 @@ studentApi.delete("/delete/:classid" , async(req,res)=>{
 
     const studentid = req.body.studentId
     const cls= await classroom.findById(req.params.classid)
+    console.log(cls)
     if(cls){
         let studs = cls.students
+        console.log(studs)
         studs = studs.filter((stud)=>{
             return stud._id !== studentid
         })
@@ -28,14 +30,20 @@ studentApi.delete("/delete/:classid" , async(req,res)=>{
 studentApi.post("/addstudent/:classid" , async(req,res)=>{
     let student = req.body
     let cls = await classroom.findById(req.params.classid)
+    console.log(cls)
     if(cls){
-        let studs = cls.students
-        studs = studs.push(student)
+        let studs = JSON.parse(JSON.stringify(cls.students))
+        console.log(studs,student)
+        studs.push(student)
+        console.log(studs)
+        console.log()
         await classroom.findByIdAndUpdate(req.params.classid,{
             $set:{students:studs}
         }, (err)=>{
             if(err){
                 res.send({message:"error occured",success:false})
+                console.log(err.message)
+                console.log(err)
             }
             else{
                 res.send({message:"deleted sucessfully" , success:true})
