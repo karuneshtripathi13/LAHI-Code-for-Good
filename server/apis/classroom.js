@@ -15,11 +15,11 @@ classroomApi.post("/sendSms" , async (req,res)=>{
 
 
 //http://localhost:4000/classroom/addclassroom/:teacherid
+
 classroomApi.post("/addclassroom/:teacherid" , async(req,res)=>{
     let newclassroom = new classrooms({
         teacher_id:req.params.teacherid,
-        classname:req.body.classanme,
-        grade:req.body.grade,
+        classname:req.body.classname,
         students:req.body.students
     })
     newclassroom.save()

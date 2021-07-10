@@ -6,15 +6,13 @@ const classroomSchema = new mongoose.Schema(
             type:String,
             required:true
         },
-        grade:{
-            type:Number,
-            required:true
-        },
         classname:{
             type:String,
             default:""
         },
-        students:[{name:String,email_id:String,mobile:Number}]
+        students:[{name:String,
+            email_id:String,
+            mobile:Number}]
     },
     {timestamps:true}
 )
