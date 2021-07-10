@@ -14,7 +14,7 @@ const classroomSchema = new mongoose.Schema(
             type:String,
             default:""
         },
-        Students:[{name:String,email_id:String,mobile:Number}]
+        students:[{name:String,email_id:String,mobile:Number}]
     },
     {timestamps:true}
 )

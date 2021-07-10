@@ -6,7 +6,7 @@ const getConnection = require("./database")
 getConnection()
 
 //import the routes we need
-const smsapi = require("./apis/sms.api")
+const smsapi = require("./apis/classroom")
 //This helps us parse the json data we receive
 app.use(express.json())
 
