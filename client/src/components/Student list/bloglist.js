@@ -1,4 +1,5 @@
 import { useState , useEffect } from "react";
+import React, { Component }  from 'react';
 import './bloglist.css'
 const Bloglist = () => {
     const [students, setStudents] = useState([])
