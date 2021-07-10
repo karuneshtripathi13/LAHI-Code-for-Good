@@ -9,7 +9,7 @@ const teachers = require("../Models/teacher.model")
 classroomApi.post("/sendSms" , async (req,res)=>{
     const classroomId = req.body.classroomId
     const classroom = await classrooms.findOne({ _id: classroomId })
-    sendSms([{mobile: '+919618210245'},{mobile: '+919772208820'}], '13th September 2:30 PM', req.body.meet_link)
+    sendSms([{mobile: '+919618210245'},{mobile: '+919772208820'}], req.body.date_time, req.body.meet_link)
     //await sendSms(classroom.students, '13th September 2:30 PM', req.body.meetLink)
     //res.send({me})
 })
@@ -37,7 +37,8 @@ classroomApi.post("/addclassroom/:teacherid" , async(req,res)=>{
 classroomApi.get("/getclassrooms/:teacherid", async(req,res)=>{
     let teacher = await teachers.findById(req.params.teacherid)
     if(teacher){
-        let data = classrooms.find({teacher_id:req.params.id})
+        let data = await classrooms.find({teacher_id:req.params.teacherid})
+        
         if(data){
             res.send({data:data})
         }
