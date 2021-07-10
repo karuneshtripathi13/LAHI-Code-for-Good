@@ -3,27 +3,34 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
   function validateForm() {
-    return email.length>0 && name.length > 0 && password.length > 0;
+    return email.length > 0 && name.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("in")
-    fetch('/teachers/Register',{method:'POST',body:JSON.stringify({name:name,email:email,password:password}),headers: {
-        'Accept': 'application/json','Content-Type': 'application/json'}}).then((response)=>response.json()).then((data)=>{
-          console.log(data.msg);
-          alert(data.msg)
-          if(data.msg.localeCompare('User Already exists')!==0)
-          history.push('/login')
-          window.location.reload()
-      })
+    console.log("in");
+    fetch("http://localhost:4000/teacher/register", {
+      method: "POST",
+      body: JSON.stringify({ name: name, email: email, password: password }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.msg);
+        alert(data.msg);
+        if (data.success) history.push("/login");
+        window.location.reload();
+      });
   }
 
   let history = useHistory();
@@ -46,7 +53,7 @@ export default function Login() {
             autoFocus
             type="text"
             value={email}
-            onChange={(e) =>  setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">

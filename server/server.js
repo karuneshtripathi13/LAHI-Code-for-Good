@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express(); 
-
+const cors=require('cors')
 //we need databaseconnection
 const getConnection = require("./database")
 getConnection()
@@ -10,7 +10,7 @@ const userApi = require("./apis/users")
 const classroomApi = require("./apis/classroom")
 //This helps us parse the json data we receive
 app.use(express.json())
-
+app.use(cors())
 
 app.use("/teacher",userApi)
 app.use("/classroom",classroomApi)
