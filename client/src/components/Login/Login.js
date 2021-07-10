@@ -24,7 +24,7 @@ export default function Login() {
           else
           {
             window.localStorage.setItem("teacher_id",data.teacher_id)
-            history.push('/login')
+            history.push('/login/classes')
           }
       })
   }

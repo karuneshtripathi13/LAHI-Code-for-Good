@@ -14,19 +14,19 @@ classroomApi.post("/sendLink" , async (req,res)=>{
         res.send({message:"Class not present",success:false})
         return
     }
-    await classrooms.findByIdandUpdate(classroomId,{
-        $set:{meetLink: req.body.meet_link}
+    let studs = JSON.parse(JSON.stringify(classroom.students))
+        console.log(studs)
+        studs.forEach(stud => {
+            stud.isPresent = false
+        });
+    await classrooms.findByIdAndUpdate(classroomId,{
+        $set:{meetLink: req.body.meet_link, students: studs}
     }, (err)=>{
-        if(err){
-            res.send({message:"error occured",success:false})
-        }
-        else{
-            res.send({message:"deleted sucessfully" , success:true})
-        }
+        if(err){res.send({message:"error occured",success:false})}
     })
-    sendSms([{mobile: '+918250299834'},{mobile: '+919772208820'}], req.body.date_time, "http://localhost:3000/"+classroomId)
-    //await sendSms(classroom.students, '13th September 2:30 PM', req.body.meetLink)
-    //res.send({me})
+    // sendSms([{mobile: '+918250299834'},{mobile: '+919772208820'}], req.body.date_time, "http://localhost:3000/"+classroomId)
+    sendSms(classroom.students, req.body.date_time, "http://localhost:4000/goToLink/"+classroomId)
+    res.send({"success": true})
 })
 
 
@@ -40,7 +40,7 @@ classroomApi.post("/addclassroom/:teacherid" , async(req,res)=>{
     })
     newclassroom.save()
     .then(()=>{
-        res.send({message:"Classroom created" , success:true})
+        res.send({message:"Classroom created" , success:true, classroom_id: newclassroom._id})
     })
     .catch((err)=>{
         res.send({message:"error occured", success:false})

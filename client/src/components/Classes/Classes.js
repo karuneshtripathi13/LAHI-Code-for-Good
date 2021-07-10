@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import './classes.css'
+import {Link} from 'react-router-dom'
 const Classes = () => {
     const [classes, setClasses] = useState([])
     const [classname, setClassname] = useState([])
@@ -11,17 +12,20 @@ const Classes = () => {
         var path='http://localhost:4000/classroom/getclassrooms/'+localStorage.getItem("teacher_id")
         fetch(path, requestOptions)
             .then(response => response.json())
-            .then(data => {setClasses(data.data); console.log(data.data)});
+            .then(data => {setClasses(data.data); console.log(data.data);localStorage.setItem('ClassData',
+            JSON.stringify(data.data)
+          )});
+            
     }, [])
     const openClass=()=>{
-      
+      var path=''
     }
     return (
-        <div>
+        <div className="classwrapper">
         <ul id="data" >
       {classes.map((data) => (
         <ul>
-        <button className='classbtn' onClick={openClass} >{data.classname}</button>
+        <div className='classbtn'><Link to='/login/student/' onClick={()=>localStorage.setItem('ClassName',data.classname)} style={{textDecoration:"none",color:"white"}} >{data.classname}</Link></div>
         </ul>
       ))}
       </ul>
