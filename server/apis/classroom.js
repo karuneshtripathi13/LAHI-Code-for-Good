@@ -20,7 +20,7 @@ classroomApi.post("/sendLink" , async (req,res)=>{
         if(err){res.send({message:"error occured",success:false})}
     })
     // sendSms([{mobile: '+918250299834'},{mobile: '+919772208820'}], req.body.date_time, "http://localhost:3000/"+classroomId)
-    sendSms(classroom.students, '13th September 2:30 PM', "http://localhost:3000/"+classroomId)
+    sendSms(classroom.students, req.body.date_time, "http://localhost:4000/goToLink/"+classroomId)
     res.send({"success": true})
 })
 

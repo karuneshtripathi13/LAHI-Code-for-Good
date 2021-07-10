@@ -21,21 +21,20 @@ app.use("/student",studentApi)
 app.get("/goToLink/:classroomId/:studentId",async(req,res)=>{
     let cls = await classroom.findById(req.params.classroomId)
     let studs = cls.students
-    updatedstuds = studs.map((std) => {
+    studs.forEach((std) => {
         if(std._id === req.params.studentId){
             std.isPresent = true
         }
     })
-
     await classroom.findByIdAndUpdate(req.params.classroomId, {
-        $set:{students:updatedstuds}
+        $set:{students:studs}
     } , (err)=>{
         if(err){
             res.send({message:"some error occured",success:false})
         }
         else{
             res.writeHead(301,
-                {Location: cls.meet_link}
+                {Location: cls.meetLink}
               );
               res.end();
         }
