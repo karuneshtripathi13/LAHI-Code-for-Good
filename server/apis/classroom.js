@@ -14,8 +14,13 @@ classroomApi.post("/sendLink" , async (req,res)=>{
         res.send({message:"Class not present",success:false})
         return
     }
+    let studs = JSON.parse(JSON.stringify(classroom.students))
+        console.log(studs)
+        studs.forEach(stud => {
+            stud.isPresent = false
+        });
     await classrooms.findByIdAndUpdate(classroomId,{
-        $set:{meetLink: req.body.meet_link}
+        $set:{meetLink: req.body.meet_link, students: studs}
     }, (err)=>{
         if(err){res.send({message:"error occured",success:false})}
     })

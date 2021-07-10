@@ -8,7 +8,7 @@ studentApi.delete("/delete/:classid" , async(req,res)=>{
     const cls= await classroom.findById(req.params.classid)
     console.log(cls)
     if(cls){
-        let studs = cls.students
+        let studs = JSON.parse(JSON.stringify(cls.students))
         console.log(studs)
         studs = studs.filter((stud)=>{
             return stud._id !== studentid
