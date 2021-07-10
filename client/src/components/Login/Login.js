@@ -16,7 +16,7 @@ export default function Login() {
   function handleSubmit(event) {
     event.preventDefault();
     console.log("in")
-    fetch('/teachers/login',{method:'POST',body:JSON.stringify({email:email,password:password}),headers: {
+    fetch('http://localhost:4000/teacher/login',{method:'POST',body:JSON.stringify({email:email,password:password}),headers: {
         'Accept': 'application/json','Content-Type': 'application/json'}}).then((response)=>response.json()).then((data)=>{
           console.log(data);
           if(!data.success)
