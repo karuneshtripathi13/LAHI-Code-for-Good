@@ -17,15 +17,16 @@ app.use(cors())
 app.use("/student",studentApi)
 app.use("/teacher",userApi)
 app.use("/classroom",classroomApi)
-app.use("/student",studentApi)
 app.get("/goToLink/:classroomId/:studentId",async(req,res)=>{
     let cls = await classroom.findById(req.params.classroomId)
-    let studs = cls.students
+    let studs = JSON.parse(JSON.stringify(cls.students))
+    console.log(studs)
     studs.forEach((std) => {
         if(std._id === req.params.studentId){
             std.isPresent = true
         }
     })
+    console.log(studs)
     await classroom.findByIdAndUpdate(req.params.classroomId, {
         $set:{students:studs}
     } , (err)=>{

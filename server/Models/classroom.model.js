@@ -13,7 +13,8 @@ const classroomSchema = new mongoose.Schema(
         students:[{name:String,
             email_id:String,
             mobile:String,isPresent: {type : Boolean, default : false}}],
-        meetLink: { type: String, default: "" }
+        meetLink: { type: String, default: "" },
+        poolLink:{ type:String , default:" "}
     },
     {timestamps:true}
 )
