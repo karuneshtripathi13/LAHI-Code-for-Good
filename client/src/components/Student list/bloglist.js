@@ -1,4 +1,5 @@
 import { useState , useEffect } from "react";
+import './bloglist.css'
 const Bloglist = () => {
     const [students, setStudents] = useState([])
     useEffect(() => {
@@ -20,8 +21,10 @@ const Bloglist = () => {
             <div className="blocklist">
             {students.map((student)=>
             <div className="blockspreview">
+                <div>
                 <h1>{student.name}</h1>
                 <p>{student.email_id}</p>
+                </div>
             </div>
             )}
             </div>
