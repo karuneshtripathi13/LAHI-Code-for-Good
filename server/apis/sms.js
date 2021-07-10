@@ -1,14 +1,11 @@
 const exp = require("express")
 const taskapi = exp.Router()
 
-//verificatioln middleware for authorising the use
-const {verification} = require("./auth")
-
 
 
 //import the models we need
-const users = require("../Models/usermodel")
-const tasks = require("../Models/taskmodel")
+const users = require("../Models/teacher.model")
+const tasks = require("../Models/classroom.model")
 
 
 
