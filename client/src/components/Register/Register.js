@@ -4,29 +4,25 @@ import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-
 export default function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   function validateForm() {
-    return id.length > 0 && password.length > 0;
+    return id.length>0 && name.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     console.log("in")
-    fetch('/file/login',{method:'POST',body:JSON.stringify({id:id,password:password}),headers: {
+    fetch('/file/reg',{method:'POST',body:JSON.stringify({id:id,name:name,password:password}),headers: {
         'Accept': 'application/json','Content-Type': 'application/json'}}).then((response)=>response.json()).then((data)=>{
           console.log(data.msg);
-          if(!data.msg)
-          alert('No Such Project found')
-          else
-          {
-            window.localStorage.setItem("idd",id)
-            window.localStorage.setItem("proj",data.proj)
-            history.push('/login/home')
-          }
+          alert(data.msg)
+          if(data.msg.localeCompare('User Already exists')!==0)
+          history.push('/')
+          window.location.reload()
       })
   }
 
@@ -44,6 +40,15 @@ export default function Login() {
             onChange={(e) => setId(e.target.value)}
           />
         </Form.Group>
+        <Form.Group size="lg" controlId="name">
+          <Form.Label>Project Name</Form.Label>
+          <Form.Control
+            autoFocus
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Form.Group>
         <Form.Group size="lg" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -53,9 +58,8 @@ export default function Login() {
           />
         </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Login &nbsp;<i className="fa fa-sign-in"></i>
+          Register &nbsp;<i className="fa fa-sign-in"></i>
         </Button>
-        <a href="/register" style={{color:"navy"}}>Register</a>
       </Form>
     </div>
   );
