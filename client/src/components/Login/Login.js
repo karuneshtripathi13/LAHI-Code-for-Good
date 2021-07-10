@@ -32,7 +32,8 @@ export default function Login() {
   let history = useHistory();
 
   return (
-    <div className="Login">
+    <div className="Login"  style={{marginTop:"175px" , backgroundColor:"#7D5A50"}}>
+      <h2  style={{marginBottom:"30px"}}>Login</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="id">
           <Form.Label>Email</Form.Label>
