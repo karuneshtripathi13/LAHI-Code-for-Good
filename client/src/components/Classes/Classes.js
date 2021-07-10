@@ -29,7 +29,7 @@ const Classes = () => {
         <div className='classbtn'><Link to='/login/student/' onClick={()=>localStorage.setItem('ClassName',data.classname)} style={{textDecoration:"none",color:"white"}} >{data.classname}</Link></div>
         </ul>
       ))}</div>
-      <ul>  <div className="classbtn1"><Link to='/' style={{textDecoration:"none",color:"white"}}>Add Class</Link></div></ul>
+      <ul>  <div className="classbtn1"><Link to='/login/createclass' style={{textDecoration:"none",color:"white"}}>Add Class</Link></div></ul>
       </ul>
         </div>
     )
