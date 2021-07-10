@@ -3,9 +3,15 @@
 }
 .Logout{
     display: flex;
+    background-color: white;
 }
 .logoutbtn{
     display: inline;
     color: black;
     margin-left: 70vw;
+    background-color: gray;
+    padding: 1vw;
+    padding-left: 1.5vw;
+    margin-top: 1vw;
+    border-radius: 1vw;
 }

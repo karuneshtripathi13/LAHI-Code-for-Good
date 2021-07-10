@@ -9,6 +9,7 @@ import Portal from "./components/Teacher Portal/Portal";
 import Classes from "./components/Classes/Classes";
 import Navbar from "./components/Navbar/Navbar";
 import Navbarlogin from "./components/Navbar-login/Navbarlogin";
+import Bloglist from "./components/Student list/bloglist";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Route path="/sign-up" ><Navbarlogin/><SignUp/></Route>
           <Route path="/login">
             <Navbar/>
-            <Classes/>
+            <Route path="/login/classes"><Classes/></Route>
+            <Route path="/login/student"><Bloglist/></Route>
           </Route>
         </div>
       </Switch>
