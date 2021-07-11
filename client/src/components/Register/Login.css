@@ -2,9 +2,10 @@
     .Login {
       padding: 5%;
       border-radius: 5%;
-      background-color: rgb(192, 192, 192);
+      background-color: #7D5A50;
       margin: auto;
       width: fit-content;
+      margin-top: 175px;
     }
   
     .Login form {

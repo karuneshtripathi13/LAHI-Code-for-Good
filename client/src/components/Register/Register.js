@@ -40,6 +40,7 @@ export default function Login() {
 
   return (
     <div className="Login">
+    <h2  style={{marginBottom:"30px"}}>Sign-Up</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="id">
           <Form.Label>Name</Form.Label>
