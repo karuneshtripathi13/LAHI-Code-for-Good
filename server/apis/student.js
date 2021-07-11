@@ -20,7 +20,7 @@ studentApi.delete("/delete/:classid" , async(req,res)=>{
                 res.send({message:"error occured",success:false})
             }
             else{
-                res.send({message:"de;eted sucessfully" , success:true})
+                res.send({message:"deleted sucessfully" , success:true})
             }
         })
     }

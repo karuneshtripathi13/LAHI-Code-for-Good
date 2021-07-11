@@ -16,7 +16,7 @@ const Attendance = () => {
         .then(response => response.json())
         .then(data => {
             if(data.students.length===0)
-            alert("Failed to get attendence")
+            alert("No attendence is available")
             else
             {
             setCount(data.count)

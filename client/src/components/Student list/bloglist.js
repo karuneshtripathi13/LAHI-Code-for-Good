@@ -29,7 +29,24 @@ const Bloglist = () => {
             {students.map((student)=>
             <div className="blockspreview">
                 <div>
-                <h1>{student.name}</h1>
+                <h1>{student.name} <button onClick={()=>{
+                    var path='http://localhost:4000/student/delete/'+localStorage.getItem('id')
+                    console.log(path)
+                     fetch(path, { method: 'DELETE',body: JSON.stringify({studentId:student._id}) })
+                     .then((response) => response.json())
+                     .then((data) =>{
+                         if(data.success)
+                         {
+                             console.log(data)
+                            alert(data.message)
+                            window.location.reload()
+                         }
+                         else{
+                             alert(data.message)
+                             window.location.reload()
+                         }
+                     } );
+                }} style={{fontSize:"0.7vw",marginLeft:"10vw"}}>Remove</button></h1>
                 <p>{student.email_id}</p>
                 </div>
             </div>
